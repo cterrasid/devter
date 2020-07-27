@@ -1,4 +1,5 @@
 import Head from "next/head";
+import AppLayout from "../components/AppLayout";
 
 export default function Home() {
   return (
@@ -8,11 +9,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <AppLayout>
         <h1 className="title">
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
-      </main>
+      </AppLayout>
 
       <style jsx>{`
         h1 {
@@ -22,21 +23,6 @@ export default function Home() {
 
         a {
           text-decoration: none;
-        }
-      `}</style>
-
-      <style jsx global>{`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
-        }
-
-        * {
-          box-sizing: border-box;
         }
       `}</style>
     </div>
