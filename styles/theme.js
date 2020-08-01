@@ -15,8 +15,3 @@ export const colors = {
   white: "#ffffff",
   black: "#000000"
 };
-
-export const colorsTrans = {
-  primary: `${addOpacityToColor(colors.primary, 0.3)}`,
-  black: `${addOpacityToColor(colors.black, 0.1)}`
-};
