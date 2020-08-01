@@ -1,5 +1,3 @@
-import { addOpacityToColor } from "./utils";
-
 export const breakpoints = {
   mobile: "520px"
 };
@@ -11,7 +9,7 @@ export const fonts = {
 
 export const colors = {
   primary: "#0099ff",
-  secondary: "1c5480",
+  secondary: "#1c5480",
   lightGrey: "#fafafa",
   white: "#ffffff",
   black: "#000000"
