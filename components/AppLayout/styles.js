@@ -10,9 +10,9 @@ html,
 body {
   background-image: radial-gradient(
       ${backgroundColor} 1px,
-      transparent 1px
+      ${colors.lightGrey} 1px
     ),
-    radial-gradient(${backgroundColor} 1px, transparent 1px);
+    radial-gradient(${backgroundColor} 1px, ${colors.lightGrey} 1px);
   background-position: 0 0, 25px 25px;
   background-size: 50px 50px;
   padding: 0;
