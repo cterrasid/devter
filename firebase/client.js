@@ -14,13 +14,12 @@ const firebaseConfig = {
 !firebase.apps.length && firebase.initializeApp(firebaseConfig);
 
 const mapUserFromFirebaseAuth = user => {
-  const { additionalUserInfo } = user;
-  const { username, profile } = additionalUserInfo;
-  const { avatar_url, blog } = profile;
+  const { displayName, email, photoURL } = user;
+
   return {
-    avatar: avatar_url,
-    username,
-    url: blog
+    avatar: photoURL,
+    username: displayName,
+    email
   };
 };
 
