@@ -1,5 +1,5 @@
-import css from "styled-jsx/css";
-import { colors } from "../../styles/theme";
+import css from 'styled-jsx/css'
+import { colors } from '../../styles/theme'
 
 export default css`
 button {
@@ -23,4 +23,4 @@ button > :global(svg) {
 button:hover {
   opacity: .7;
 }
-`;
+`

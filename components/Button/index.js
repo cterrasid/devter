@@ -1,7 +1,7 @@
-import { Fragment } from "react";
-import styles from "./styles";
+import { Fragment } from 'react'
+import styles from './styles'
 
-export default function Button({ children, onClick }) {
+export default function Button ({ children, onClick }) {
   return (
     <Fragment>
       <button onClick={onClick}>
@@ -9,5 +9,5 @@ export default function Button({ children, onClick }) {
       </button>
       <style jsx>{styles}</style>
     </Fragment>
-  );
+  )
 }

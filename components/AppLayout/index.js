@@ -1,7 +1,7 @@
-import { Fragment } from "react";
-import styles, { globalStyles } from "./styles";
+import { Fragment } from 'react'
+import styles, { globalStyles } from './styles'
 
-export default function AppLayout({ children }) {
+export default function AppLayout ({ children }) {
   return (
     <Fragment>
       <div>
@@ -12,5 +12,5 @@ export default function AppLayout({ children }) {
       <style jsx>{styles}</style>
       <style jsx global>{globalStyles}</style>
     </Fragment>
-  );
+  )
 }

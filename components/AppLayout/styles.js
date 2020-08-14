@@ -1,9 +1,9 @@
-import css from "styled-jsx/css";
-import { colors, fonts, breakpoints } from "../../styles/theme";
-import { addOpacityToColor } from "../../styles/utils";
+import css from 'styled-jsx/css'
+import { colors, fonts, breakpoints } from '../../styles/theme'
+import { addOpacityToColor } from '../../styles/utils'
 
-const backgroundColor = addOpacityToColor(colors.primary, 0.3);
-const shadow = addOpacityToColor(colors.black, 0.1);
+const backgroundColor = addOpacityToColor(colors.primary, 0.3)
+const shadow = addOpacityToColor(colors.black, 0.1)
 
 export const globalStyles = css.global`
 html,
@@ -23,7 +23,7 @@ body {
 * {
   box-sizing: border-box;
 }
-`;
+`
 
 export default css`
 div {
@@ -46,4 +46,4 @@ main {
     height: 90vh;
   }
 }
-`;
+`
