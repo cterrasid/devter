@@ -42,7 +42,9 @@ export default function HomePage() {
 
         header {
           display: flex;
-          border-bottom: 1px solid #ccc;
+          background: #ffffffaa;
+          backdrop-filter: blur(5px);
+          border-bottom: 1px solid #eee;
           align-items: center;
           height: 49px;
           width: 100%;
@@ -53,11 +55,13 @@ export default function HomePage() {
         h2 {
           font-weight: 800;
           font-size: 21px;
+          padding-left: 15px;
         }
 
         nav {
+          background: #ffffff;
           bottom: 0;
-          border-top: 1px solid #ccc;
+          border-top: 1px solid #eee;
           position: sticky;
           height: 49px;
           width: 100%;

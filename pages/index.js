@@ -1,26 +1,31 @@
+import { useState, useEffect } from "react"
+import { loginWithGitHub, onAuthStateChanged } from "firebase/client"
 import Head from "next/head"
+import { useRouter } from "next/router"
 import AppLayout from "components/AppLayout"
 import Button from "components/Button"
 import GitHubIcon from "components/Icons/github"
 import { colors } from "styles/theme"
-import { loginWithGitHub, onAuthStateChanged } from "firebase/client"
-import { useState, useEffect } from "react"
-import Avatar from "components/Avatar"
+
+const USER_STATES = {
+  NOT_LOGGED: null,
+  UNKNOWN: undefined,
+}
 
 export default function Home() {
-  const [user, setUser] = useState(undefined)
+  const [user, setUser] = useState(USER_STATES.UNKNOWN)
+  const router = useRouter()
 
   useEffect(() => {
     onAuthStateChanged(setUser)
   }, [])
 
+  useEffect(() => {
+    user && router.replace("/home")
+  }, [user])
+
   const onClick = () => {
-    loginWithGitHub()
-      .then((user) => {
-        setUser(user)
-        console.log(user)
-      })
-      .catch((err) => console.error(err))
+    loginWithGitHub().catch((err) => console.error(err))
   }
   return (
     <div className="container">
@@ -35,22 +40,13 @@ export default function Home() {
           <h1>Devter</h1>
           <h2>Talk about development with developers</h2>
           <div>
-            {user === null && (
+            {user === USER_STATES.NOT_LOGGED && (
               <Button onClick={onClick}>
                 <GitHubIcon width={32} height={32} fill={colors.white} />
                 Login with GitHub
               </Button>
             )}
-            {user && user.avatar && (
-              <div>
-                <Avatar
-                  src={user.avatar}
-                  alt={user.username}
-                  text={user.username}
-                  withText
-                />
-              </div>
-            )}
+            {user === USER_STATES.UNKNOWN && <p>Loading...</p>}
           </div>
         </section>
       </AppLayout>
