@@ -1,14 +1,40 @@
 import Button from "components/Button"
 import AppLayout from "components/AppLayout"
+import { useState } from "react"
+import useUser from "hooks/useUser"
+import { addDevit } from "firebase/client"
 
 export default function ComposeDevit() {
+  const user = useUser()
+  const [message, setMessage] = useState([])
+
+  const handleChange = (e) => {
+    const { value } = e.target
+    setMessage(value)
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    addDevit({
+      avatar: user.avatar,
+      content: message,
+      userId: user.uid,
+      userName: user.username,
+    })
+  }
+
   return (
     <>
       <AppLayout>
-        <textarea placeholder="¿Qué está pasando?"></textarea>
-        <div>
-          <Button>Devitear</Button>
-        </div>
+        <form onSubmit={handleSubmit}>
+          <textarea
+            onChange={handleChange}
+            placeholder="¿Qué está pasando?"
+          ></textarea>
+          <div>
+            <Button disabled={message.length === 0}>Devitear</Button>
+          </div>
+        </form>
       </AppLayout>
       <style jsx>{`
         div {
