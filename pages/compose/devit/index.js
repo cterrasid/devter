@@ -3,10 +3,22 @@ import AppLayout from "components/AppLayout"
 import { useState } from "react"
 import useUser from "hooks/useUser"
 import { addDevit } from "firebase/client"
+import { useRouter } from "next/router"
+
+const COMPOSE_STATES = {
+  USER_UNKNOWN: 0,
+  LOADING: 1,
+  SUCCESS: 2,
+  ERROR: -1,
+}
 
 export default function ComposeDevit() {
-  const user = useUser()
   const [message, setMessage] = useState([])
+  const [composeStatus, setComposeStatus] = useState(
+    COMPOSE_STATES.USER_UNKNOWN
+  )
+  const user = useUser()
+  const router = useRouter()
 
   const handleChange = (e) => {
     const { value } = e.target
@@ -15,13 +27,25 @@ export default function ComposeDevit() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    setComposeStatus(COMPOSE_STATES.LOADING)
+
     addDevit({
       avatar: user.avatar,
       content: message,
       userId: user.uid,
       userName: user.username,
     })
+      .then(() => {
+        router.push("/home")
+      })
+      .catch((err) => {
+        console.error(err)
+        setComposeStatus(COMPOSE_STATES.ERROR)
+      })
   }
+
+  const isButtonDisabled =
+    message.length === 0 && composeStatus === COMPOSE_STATES.LOADING
 
   return (
     <>
@@ -32,7 +56,7 @@ export default function ComposeDevit() {
             placeholder="¿Qué está pasando?"
           ></textarea>
           <div>
-            <Button disabled={message.length === 0}>Devitear</Button>
+            <Button disabled={isButtonDisabled}>Devitear</Button>
           </div>
         </form>
       </AppLayout>
