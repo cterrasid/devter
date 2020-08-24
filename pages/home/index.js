@@ -2,6 +2,7 @@ import { Fragment, useState, useEffect } from "react"
 import Avatar from "components/Avatar"
 import AppLayout from "components/AppLayout"
 import Devit from "components/Devit"
+import { colors } from "styles/theme"
 
 export default function HomePage() {
   const [timeline, setTimeline] = useState([])
@@ -34,12 +35,6 @@ export default function HomePage() {
         <nav></nav>
       </AppLayout>
       <style jsx>{`
-        section {
-          display: flex;
-          flex-direction: column;
-          padding-top: 49px;
-        }
-
         header {
           display: flex;
           background: #ffffffaa;
@@ -59,7 +54,7 @@ export default function HomePage() {
         }
 
         nav {
-          background: #ffffff;
+          background: ${colors.white};
           bottom: 0;
           border-top: 1px solid #eee;
           position: sticky;

@@ -20,7 +20,7 @@ export default function Devit({ avatar, username, message, id }) {
         article {
           display: flex;
           padding: 10px 15px;
-          border-bottom: 2px solid #0099ff17;
+          border-bottom: 1px solid #eee;
         }
         p {
           margin: 0;
