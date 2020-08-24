@@ -45,7 +45,7 @@ export default function ComposeDevit() {
   }
 
   const isButtonDisabled =
-    message.length === 0 && composeStatus === COMPOSE_STATES.LOADING
+    message.length === 0 || composeStatus === COMPOSE_STATES.LOADING
 
   return (
     <>

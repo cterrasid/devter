@@ -51,3 +51,23 @@ export const addDevit = ({ avatar, content, userId, userName }) => {
     sharedCount: 0,
   }) // Add a new collection to database service
 }
+
+export const fetchLatestDevits = () => {
+  return dbService
+    .collection("devits")
+    .get()
+    .then(({ docs }) => {
+      return docs.map((doc) => {
+        const id = doc.id
+        const data = doc.data()
+        const { createdAt } = data
+
+        const date = new Date(createdAt.seconds * 1000)
+        const normalizedCreatedAt = new Intl.DateTimeFormat("es-ES").format(
+          date
+        )
+
+        return { ...data, id, createdAt: normalizedCreatedAt }
+      })
+    })
+}
