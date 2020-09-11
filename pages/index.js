@@ -4,7 +4,7 @@ import Head from "next/head"
 import { useRouter } from "next/router"
 import AppLayout from "components/AppLayout"
 import Button from "components/Button"
-import GitHubIcon from "components/Icons/github"
+import GitHubIcon from "components/Icons/githubIcon"
 import { colors } from "styles/theme"
 import useUser, { USER_STATES } from "hooks/useUser"
 

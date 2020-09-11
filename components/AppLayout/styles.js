@@ -42,6 +42,8 @@ export default css`
     background-color: ${colors.white};
     border-radius: 10px;
     box-shadow: 0 10px 25px ${shadow};
+    display: flex;
+    flex-direction: column;
     height: 100%;
     width: 100%;
     overflow-y: auto;
@@ -49,8 +51,8 @@ export default css`
 
   @media (min-width: ${breakpoints.mobile}) {
     main {
-      width: 450px;
       height: 90vh;
+      width: ${breakpoints.mobile};
     }
   }
 `
