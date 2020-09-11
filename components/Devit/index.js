@@ -1,7 +1,9 @@
 import React, { Fragment } from "react"
 import Avatar from "components/Avatar"
+import useTimeAgo from "hooks/useTimeAgo"
 
 export default function Devit({ avatar, id, content, createdAt, userName }) {
+  const timeago = useTimeAgo(createdAt)
   return (
     <Fragment>
       <article key={id}>
@@ -12,7 +14,7 @@ export default function Devit({ avatar, id, content, createdAt, userName }) {
           <header>
             <strong>{userName}</strong>
             <span> · </span>
-            <date>{createdAt}</date>
+            <time>{timeago}</time>
           </header>
           <p>{content}</p>
         </section>
