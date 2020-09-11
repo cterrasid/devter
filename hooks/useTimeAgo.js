@@ -24,11 +24,17 @@ export default function useTimeAgo(timeStamp) {
   const [timeago, setTimeago] = useState(() => getDateDiffs(timeStamp))
 
   useEffect(() => {
-    if (timeago.unit === "second") {
-      const interval = setInterval(() => {
-        const newTimeAgo = getDateDiffs(timeStamp)
-        setTimeago(newTimeAgo)
-      }, 5000)
+    const second = timeago.unit === "second"
+    const minute = timeago.unit === "minute"
+
+    if (second || minute) {
+      const interval = setInterval(
+        () => {
+          const newTimeAgo = getDateDiffs(timeStamp)
+          setTimeago(newTimeAgo)
+        },
+        second ? 5000 : 60000
+      )
 
       return () => clearInterval(interval)
     }
